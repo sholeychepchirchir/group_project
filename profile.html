@@ -1,0 +1,119 @@
+<!-- profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - SkillSwap</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo"><span>SK</span>illSwap</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="sign_in.html">Sign In</a></li>
+        <li><a href="sign_up.html">Sign Up</a></li>
+      </ul>
+      <button id="modeToggle" style="margin-left:12px;">Dark Mode</button>
+    </div>
+  </header>
+
+<section class="profile-hero">
+  <img src="profile-placeholder.jpg" alt="Profile Image" class="profile-img" id="profilePic" />
+  <div class="profile-info">
+    <h1 id="profileName">John Doe</h1>
+  </div>
+  <button class="edit-profile-btn" id="editProfileBtn">Edit Profile</button>
+</section>
+
+<section class="about-section">
+  <h2>About</h2>
+  <p id="aboutText">Aspiring web developer with a strong foundation in HTML, CSS, and JavaScript. I love learning new tools and frameworks.</p>
+</section>
+
+ <section class="skills-section">
+  <h2>Skills Known
+    <button class="add-skill-btn" onclick="addSkill('known')">+</button>
+  </h2>
+  <div class="skills-grid" id="skillsKnown">
+    <div class="listing"><img src="images/HTML.jpeg" alt="HTML"><p>HTML</p></div>
+    <div class="listing"><img src="images/css.jpeg" alt="CSS"><p>CSS</p></div>
+    <div class="listing"><img src="images/Javascript.jpeg" alt="JS"><p>JS</p></div>
+  </div>
+</section>
+
+<section class="skills-section">
+  <h2>Skills Needed
+    <button class="add-skill-btn" onclick="addSkill('needed')">+</button>
+  </h2>
+  <div class="skills-grid" id="skillsNeeded">
+    <div class="listing"><img src="images/GitHUb.jpeg" alt="GitHub"><p>GitHub</p></div>
+    <div class="listing"><img src="images/PHP.jpeg" alt="PHP"><p>PHP</p></div>
+    <div class="listing"><img src="images/MYSQL.jpeg" alt="MYSQL"><p>MYSQL</p></div>
+  </div>
+</section>
+
+<!-- Optional: Match with Others Button -->
+<button onclick="findMatches()" style="margin: 16px auto; display: block;">Find Matches</button>
+
+
+  <footer>
+    <div class="footer-container">
+      <div class="logo"><span>SK</span>illSwap</div>
+      <div class="footer-links">
+        <h3>Quick links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="explore.html">Explore</a></li>
+          <li><a href="profile.html">Profile</a></li>
+          <li><a href="sign_up.html">Sign Up</a></li>
+          <li><a href="sign_in.html">Sign In</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h3>Contact</h3>
+        <p>Email: info@skillswap.com</p>
+        <p>Phone: +254114700531</p>
+        <p>Location: Nairobi, Kenya</p>
+      </div>
+      <div class="footer-social">
+        <h3>Socials</h3>
+        <a href="https://wa.me/254114700531
+">WhatsApp</a>
+        <a href="https://facebook.com/sholeychepchirchir
+">Facebook</a>
+        <a href="https://instagram.com/sholeychiri
+">Twitter</a>
+        <a href="https://twitter.com/SHOLEYCHEP80769
+">Instagram</a>
+      </div>
+    </div>
+    <p>&copy; 2025 SkillSwap. All rights reserved.</p>
+  </footer>
+ <!-- Edit Profile Modal -->
+<div class="modal" id="editModal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <h2>Edit Profile</h2>
+    <form id="editProfileForm">
+      <label for="newName">Name</label>
+      <input type="text" id="newName" name="newName" required />
+
+      <label for="newAbout">About</label>
+      <textarea id="newAbout" name="newAbout" rows="3" required></textarea>
+
+      <label for="newPhoto">Profile Photo</label>
+      <input type="file" id="newPhoto" name="newPhoto" accept="image/*" />
+
+      <button type="submit" class="btn-submit">Save</button>
+    </form>
+  </div>
+</div>
+
+
+</body>
+</html>
