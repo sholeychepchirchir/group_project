@@ -25,15 +25,13 @@ header {
 }
 .navbar {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: nowrap;
   max-width: 1200px;
   margin: 0 auto;
-  height: 60px;
   padding: 0 12px;
-  width: 100%;
-  min-width: 320px;
+  height: 60px;
   box-sizing: border-box;
 }
 .logo {
@@ -71,10 +69,11 @@ header {
   color: #fff;
   border: none;
   border-radius: 4px;
-  padding: 7px 16px;
+  padding: 7px 12px;
   font-weight: bold;
   cursor: pointer;
   margin-left: 10px;
+  font-size: 1.1rem;
   transition: background 0.2s;
 }
 #modeToggle:hover {
@@ -185,6 +184,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 .listing img {
   width: 60px;
@@ -198,6 +198,35 @@ header {
   margin-top: 4px;
   font-size: 0.97rem;
   text-align: center;
+}
+.listing .edit-skill-btn,
+.listing .delete-skill-btn {
+  position: absolute;
+  top: 8px;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.listing .edit-skill-btn {
+  right: 48px;
+  background: #3ebd3e;
+  color: #fff;
+}
+.listing .edit-skill-btn:hover {
+  background: #2e9d2e;
+  transform: scale(1.05);
+}
+.listing .delete-skill-btn {
+  right: 8px;
+  background: #e74c3c;
+  color: #fff;
+}
+.listing .delete-skill-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
 }
 
 /* ====== Add Skill Button ====== */
@@ -434,16 +463,13 @@ footer {
 }
 .footer-container {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: nowrap;
   max-width: 1200px;
   margin: 0 auto;
   padding: 12px 8px 4px 8px;
-  width: 100%;
-  min-width: 320px;
   box-sizing: border-box;
-  overflow-x: auto;
 }
 .footer-container > div {
   flex: 1 1 0;
@@ -505,12 +531,58 @@ footer > p {
 }
 
 /* ====== Responsive Design ====== */
-@media (max-width: 900px) {
-  .navbar, .footer-container {
-    padding: 0 4vw;
-  }
-}
 @media (max-width: 700px) {
+  /* Header */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 16px;
+  }
+  .logo {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+  #modeToggle {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+  .footer-container > div {
+    min-width: 100%;
+    margin: 8px 0;
+  }
+  .footer-container .logo {
+    font-size: 1.5rem;
+  }
+  .footer-links h3, .footer-contact h3 {
+    font-size: 0.95rem;
+  }
+  .footer-links li, .footer-contact p, .footer-social a {
+    font-size: 0.9rem;
+  }
+
+  /* Other Sections */
   .grid-3x2, .grid-3x3, .skills-grid {
     grid-template-columns: 1fr;
   }
@@ -522,33 +594,97 @@ footer > p {
 
 /* ====== Dark Mode ====== */
 .dark-mode {
-  background: #181818 ;
-  color: #f1f1f1 ;
+  background: #181818;
+  color: #f1f1f1;
 }
 .dark-mode header, .dark-mode footer {
-  background: #232323 ;
-  color: #f1f1f1 ;
+  background: #232323;
+  border-color: #444;
+}
+.dark-mode .navbar, .dark-mode .footer-container {
+  color: #f1f1f1;
+}
+.dark-mode .logo, .dark-mode .nav-links a, .dark-mode .footer-links a, .dark-mode .footer-social a, .dark-mode .footer-contact p, .dark-mode footer > p {
+  color: #f1f1f1;
+}
+.dark-mode .nav-links a:hover, .dark-mode .footer-links a:hover, .dark-mode .footer-social a:hover {
+  color: #1a73e8;
 }
 .dark-mode .form-section form, .dark-mode .modal-content {
-  background: #232323 ;
-  color: #f1f1f1 ;
+  background: #232323;
+  color: #f1f1f1;
+}
+.dark-mode .form-section label, .dark-mode .form-section p, .dark-mode .form-section a {
+  color: #f1f1f1;
+}
+.dark-mode .form-section a:hover {
+  color: #1a73e8;
 }
 .dark-mode .btn-submit, .dark-mode .add-skill-btn, .dark-mode #modeToggle {
-  background: #444 ;
-  color: #fff ;
+  background: #444;
+  color: #f1f1f1;
 }
-.dark-mode input, .dark-mode textarea {
-  background: #222 ;
-  color: #fff ;
-  border-color: #444 ;
+.dark-mode .btn-submit:hover, .dark-mode .add-skill-btn:hover, .dark-mode #modeToggle:hover {
+  background: var(--hover-blue);
+  color: #f1f1f1;
+}
+.dark-mode input[type="text"],
+.dark-mode input[type="email"],
+.dark-mode input[type="password"],
+.dark-mode textarea {
+  background: #333;
+  color: #ffffff;
+  border-color: #555;
+}
+.dark-mode input[type="text"]::placeholder,
+.dark-mode input[type="email"]::placeholder,
+.dark-mode input[type="password"]::placeholder,
+.dark-mode textarea::placeholder {
+  color: #ccc;
 }
 .dark-mode .listing {
-  background: #232323 ;
-  color: #fff ;
+  background: #232323;
+  color: #f1f1f1;
 }
-.dark-mode .footer-links a, .dark-mode .footer-social a {
-  color: #f1f1f1 ;
+.dark-mode .edit-skill-btn {
+  background: #2e9d2e;
+  color: #f1f1f1;
 }
-.dark-mode .footer-links a:hover, .dark-mode .footer-social a:hover {
-  color: #1a73e8 ;
+.dark-mode .edit-skill-btn:hover {
+  background: #3ebd3e;
+}
+.dark-mode .delete-skill-btn {
+  background: #c0392b;
+  color: #f1f1f1;
+}
+.dark-mode .delete-skill-btn:hover {
+  background: #e74c3c;
+}
+.dark-mode .hero-section, .dark-mode .profile-hero {
+  color: #f1f1f1;
+}
+.dark-mode .how-it-works, .dark-mode .about-section, .dark-mode .skills-section {
+  color: #f1f1f1;
+}
+.dark-mode .step p, .dark-mode .listing p {
+  color: #f1f1f1;
+}
+.dark-mode .circle {
+  background: #444;
+  color: #f1f1f1;
+}
+.dark-mode .edit-profile-btn {
+  background: #444;
+  color: #f1f1f1;
+}
+.dark-mode .edit-profile-btn:hover {
+  background: var(--hover-blue);
+  color: #f1f1f1;
+}
+.dark-mode .close {
+  color: #ddd;
+}
+.dark-mode .search-section input[type="text"] {
+  background: #222;
+  color: #f1f1f1;
 }

@@ -1,22 +1,20 @@
-// ========== 1. Navigation Highlight ==========
+// ========== Navigation Highlight ==========
 document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-links a');
   navLinks.forEach(link => {
-    if (
-      link.href === window.location.href ||
-      window.location.pathname.endsWith(link.getAttribute('href'))
-    ) {
+    if (link.href === window.location.href || window.location.pathname.endsWith(link.getAttribute('href'))) {
       link.style.color = '#3ebd3e';
       link.style.fontWeight = 'bold';
     }
   });
 });
 
-// ========== 2. Form Validation ==========
+// ========== Form Validation and Signup Redirect ==========
 document.addEventListener('DOMContentLoaded', function() {
   const forms = document.querySelectorAll('.form-section form');
   forms.forEach(form => {
     form.addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
       let valid = true;
       const inputs = form.querySelectorAll('input[required], textarea[required]');
       inputs.forEach(input => {
@@ -27,9 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
           input.style.borderColor = '#ccc';
         }
       });
-      // For sign up, check password match
-      const password = form.querySelector('input[type="password"][name="password"]');
-      const confirm = form.querySelector('input[type="password"][name="confirm"]');
+      // Check password match for signup
+      const password = form.querySelector('input[name="password"]');
+      const confirm = form.querySelector('input[name="confirm"]');
       if (password && confirm && password.value !== confirm.value) {
         password.style.borderColor = 'red';
         confirm.style.borderColor = 'red';
@@ -37,103 +35,145 @@ document.addEventListener('DOMContentLoaded', function() {
         valid = false;
       }
       if (!valid) {
-        e.preventDefault();
         alert('Please fill in all required fields.');
+        return;
+      }
+      // Handle form submission
+      const submitButton = form.querySelector('button[type="submit"]');
+      if (submitButton.textContent.includes('Sign Up')) {
+        alert('Sign up successful! Redirecting to profile...');
+        setTimeout(() => {
+          window.location.href = 'profile.html';
+        }, 1000);
+      } else if (submitButton.textContent.includes('Sign In')) {
+        alert('Sign in successful!');
+        form.reset();
       }
     });
   });
 });
 
-// ========== 3. Edit Profile (Name, About, Photo) ==========
+// ========== Edit Profile (Name, About, Photo) ==========
 document.addEventListener('DOMContentLoaded', function() {
-  const editBtn = document.getElementById('editProfileBtn');
-  const modal = document.getElementById('editModal');
-  const closeModal = document.getElementById('closeModal');
-  const editForm = document.getElementById('editProfileForm');
+  const editBtn = document.querySelector('#editProfileBtn');
+  const modal = document.querySelector('#editModal');
+  const closeModal = document.querySelector('#closeModal');
+  const editForm = document.querySelector('#editProfileForm');
   if (editBtn && modal && closeModal && editForm) {
-    // Prefill fields when opening modal
-    editBtn.onclick = function() {
+    editBtn.addEventListener('click', function() {
       modal.style.display = 'flex';
-      document.getElementById('newName').value = document.getElementById('profileName').textContent;
-      document.getElementById('newAbout').value = document.getElementById('aboutText').textContent;
-    };
-    // Close modal
-    closeModal.onclick = function() {
+      document.querySelector('#newName').value = document.querySelector('#profileName').textContent;
+      document.querySelector('#newAbout').value = document.querySelector('#aboutText').textContent;
+    });
+    closeModal.addEventListener('click', function() {
       modal.style.display = 'none';
-    };
-    // Save changes
-    editForm.onsubmit = function(e) {
+    });
+    editForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      // Update name
-      const newName = document.getElementById('newName').value;
-      if (newName) document.getElementById('profileName').textContent = newName;
-      // Update about
-      const newAbout = document.getElementById('newAbout').value;
-      if (newAbout) document.getElementById('aboutText').textContent = newAbout;
-      // Update photo (preview only)
-      const photoInput = document.getElementById('newPhoto');
+      const newName = document.querySelector('#newName').value.trim();
+      const newAbout = document.querySelector('#newAbout').value.trim();
+      const photoInput = document.querySelector('#newPhoto');
+      if (newName) {
+        document.querySelector('#profileName').textContent = newName;
+      }
+      if (newAbout) {
+        document.querySelector('#aboutText').textContent = newAbout;
+      }
       if (photoInput.files && photoInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function(e) {
-          document.getElementById('profilePic').src = e.target.result;
+          document.querySelector('#profilePic').src = e.target.result;
         };
         reader.readAsDataURL(photoInput.files[0]);
       }
       modal.style.display = 'none';
-    };
-    // Close modal on outside click
-    window.onclick = function(event) {
-      if (event.target === modal) modal.style.display = 'none';
-    };
+      alert('Profile updated successfully!');
+    });
+    window.addEventListener('click', function(event) {
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
   }
 });
 
-
-// ========== 4. Add Skill (Known & Needed) ==========
+// ========== Add Skill (Known & Needed) ==========
 function addSkill(type) {
-  let skillName = prompt("Enter the skill name:");
-  if (!skillName) return;
-  let skillImg = prompt("Enter image URL (or leave blank for default):");
-  if (!skillImg) skillImg = "images/default-skill.png"; // Use your default icon
-  let skillDiv = document.createElement('div');
+  const skillName = prompt("Enter the skill name:");
+  if (!skillName || !skillName.trim()) {
+    alert("Skill name is required!");
+    return;
+  }
+  const skillImg = prompt("Enter image URL (or leave blank for default):") || "images/default-skill.png";
+  const skillDiv = document.createElement('div');
   skillDiv.className = "listing";
-  skillDiv.innerHTML = `<img src="${skillImg}" alt="${skillName}"><p>${skillName}</p>`;
-  if (type === "known") {
-    document.getElementById('skillsKnown').appendChild(skillDiv);
-  } else {
-    document.getElementById('skillsNeeded').appendChild(skillDiv);
+  skillDiv.innerHTML = `
+    <img src="${skillImg}" alt="${skillName}">
+    <p>${skillName}</p>
+    <button class="edit-skill-btn" onclick="editSkill(this, '${type}')">Edit</button>
+    <button class="delete-skill-btn" onclick="deleteSkill(this)">Delete</button>
+  `;
+  const target = type === "known" ? document.querySelector('#skillsKnown') : document.querySelector('#skillsNeeded');
+  target.insertBefore(skillDiv, target.querySelector('.add-skill-btn'));
+}
+
+// ========== Edit Skill ==========
+function editSkill(button, type) {
+  const skillDiv = button.parentElement;
+  const currentName = skillDiv.querySelector('p').textContent;
+  const currentImg = skillDiv.querySelector('img').src;
+  const newName = prompt("Edit skill name:", currentName);
+  if (!newName || !newName.trim()) {
+    alert("Skill name is required!");
+    return;
+  }
+  const newImg = prompt("Edit image URL (or leave blank for default):", currentImg) || "images/default-skill.png";
+  skillDiv.innerHTML = `
+    <img src="${newImg}" alt="${newName}">
+    <p>${newName}</p>
+    <button class="edit-skill-btn" onclick="editSkill(this, '${type}')">Edit</button>
+    <button class="delete-skill-btn" onclick="deleteSkill(this)">Delete</button>
+  `;
+  alert("Skill updated successfully!");
+}
+
+// ========== Delete Skill ==========
+function deleteSkill(button) {
+  if (confirm("Are you sure you want to delete this skill?")) {
+    button.parentElement.remove();
+    alert("Skill deleted successfully!");
   }
 }
 
-// ========== 5. Match With Others (Demo) ==========
+// ========== Match With Others (Placeholder for Future) ==========
 function findMatches() {
-  alert("Matching functionality coming soon!\n(In a real app, this would show users who have the skills you need.)");
+  // TODO: Implement skill matching functionality in the future
+  // This will match users based on skills known and needed
+  alert("Matching functionality is under development and will be available in a future update!");
 }
 
-// ========== 6. Dark and Light Mode ==========
+// ========== Dark and Light Mode ==========
 document.addEventListener('DOMContentLoaded', function() {
-  const modeBtn = document.getElementById('modeToggle');
+  const modeBtn = document.querySelector('#modeToggle');
   if (modeBtn) {
-    modeBtn.onclick = function() {
+    modeBtn.addEventListener('click', function() {
       document.body.classList.toggle('dark-mode');
-      // Save preference
       if (document.body.classList.contains('dark-mode')) {
         localStorage.setItem('mode', 'dark');
-        modeBtn.textContent = "Light Mode";
+        modeBtn.textContent = "☀️";
       } else {
         localStorage.setItem('mode', 'light');
-        modeBtn.textContent = "Dark Mode";
+        modeBtn.textContent = "🌙";
       }
-    };
-    // Load preference
+    });
     if (localStorage.getItem('mode') === 'dark') {
       document.body.classList.add('dark-mode');
-      modeBtn.textContent = "Light Mode";
+      modeBtn.textContent = "☀️";
     }
   }
 });
 
-// ========== 7. Search Filter ==========
+// ========== Search Filter ==========
 document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.querySelector('.search-section input[type="text"]');
   const listings = document.querySelectorAll('.grid-3x3 .listing, .grid-3x2 .listing, .skills-grid .listing');
@@ -141,40 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
     searchInput.addEventListener('input', function() {
       const query = searchInput.value.toLowerCase();
       listings.forEach(item => {
-        const text = item.innerText.toLowerCase();
+        const text = item.textContent.toLowerCase();
         item.style.display = text.includes(query) ? '' : 'none';
       });
-    });
-  }
-});
-
-// ========== 8. Show/Hide Password ==========
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.form-section input[type="password"]').forEach(input => {
-    // Avoid adding multiple toggles
-    if (input.nextElementSibling && input.nextElementSibling.classList && input.nextElementSibling.classList.contains('toggle-password')) return;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = 'Show';
-    btn.className = 'toggle-password';
-    btn.style.marginLeft = '8px';
-    btn.style.fontSize = '0.9em';
-    btn.onclick = function(e) {
-      e.preventDefault();
-      input.type = input.type === 'password' ? 'text' : 'password';
-      btn.textContent = input.type === 'password' ? 'Show' : 'Hide';
-    };
-    input.parentNode.insertBefore(btn, input.nextSibling);
-  });
-});
-
-// ========== 9. Profile Edit Button Alert (if modal not present) ==========
-document.addEventListener('DOMContentLoaded', function() {
-  const editBtn = document.getElementById('editProfileBtn');
-  if (editBtn && !document.getElementById('editModal')) {
-    editBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      alert('Edit Profile functionality coming soon!');
     });
   }
 });
