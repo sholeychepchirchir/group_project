@@ -1,0 +1,9 @@
+.grid-3x2, .grid-3x3, .skills-grid {
+  display: grid;
+  gap: 18px;
+  justify-content: center;
+  align-items: start;
+}
+.grid-3x2, .grid-3x3, .skills-grid {
+  grid-template-columns: repeat(3, 1fr);
+}

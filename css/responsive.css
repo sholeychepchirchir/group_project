@@ -1,0 +1,61 @@
+
+@media (max-width: 700px) {
+    /* for header section */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 16px;
+  }
+  .logo {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+  #modeToggle {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
+}
+/*for footer section*/
+ .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+  }
+  .footer-container > div {
+    min-width: 100%;
+    margin: 8px 0;
+  }
+  .footer-container .logo {
+    font-size: 1.5rem;
+  }
+  .footer-links h3, .footer-contact h3 {
+    font-size: 0.95rem;
+  }
+  .footer-links li, .footer-contact p, .footer-social a {
+    font-size: 0.9rem;
+  }
+
+   /* for grid containers */
+  .grid-3x2, .grid-3x3, .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  /* for heros,about,skills,featured and how it works sections */
+  .profile-hero, .hero-section, .about-section, .skills-section, .featured-listings, .how-it-works {
+    padding-left: 4vw;
+    padding-right: 4vw;
+  }

@@ -1,0 +1,95 @@
+.dark-mode {
+  background: #181818;
+  color: #f1f1f1;
+}
+.dark-mode header, .dark-mode footer {
+  background: #232323;
+  border-color: #444;
+}
+.dark-mode .navbar, .dark-mode .footer-container {
+  color: #f1f1f1;
+}
+.dark-mode .logo, .dark-mode .nav-links a, .dark-mode .footer-links a, .dark-mode .footer-social a, .dark-mode .footer-contact p, .dark-mode footer > p {
+  color: #f1f1f1;
+}
+.dark-mode .nav-links a:hover, .dark-mode .footer-links a:hover, .dark-mode .footer-social a:hover {
+  color: #1a73e8;
+}
+.dark-mode .form-section form, .dark-mode .modal-content {
+  background: #232323;
+  color: #f1f1f1;
+}
+.dark-mode .form-section label, .dark-mode .form-section p, .dark-mode .form-section a {
+  color: #f1f1f1;
+}
+.dark-mode .form-section a:hover {
+  color: #1a73e8;
+}
+.dark-mode .btn-submit, .dark-mode .add-skill-btn, .dark-mode #modeToggle {
+  background: #444;
+  color: #f1f1f1;
+}
+.dark-mode .btn-submit:hover, .dark-mode .add-skill-btn:hover, .dark-mode #modeToggle:hover {
+  background: var(--hover-blue);
+  color: #f1f1f1;
+}
+.dark-mode input[type="text"],
+.dark-mode input[type="email"],
+.dark-mode input[type="password"],
+.dark-mode textarea {
+  background: #333;
+  color: #ffffff;
+  border-color: #555;
+}
+.dark-mode input[type="text"]::placeholder,
+.dark-mode input[type="email"]::placeholder,
+.dark-mode input[type="password"]::placeholder,
+.dark-mode textarea::placeholder {
+  color: #ccc;
+}
+.dark-mode .listing {
+  background: #232323;
+  color: #f1f1f1;
+}
+.dark-mode .edit-skill-btn {
+  background: #2e9d2e;
+  color: #f1f1f1;
+}
+.dark-mode .edit-skill-btn:hover {
+  background: #3ebd3e;
+}
+.dark-mode .delete-skill-btn {
+  background: #c0392b;
+  color: #f1f1f1;
+}
+.dark-mode .delete-skill-btn:hover {
+  background: #e74c3c;
+}
+.dark-mode .hero-section, .dark-mode .profile-hero {
+  color: #f1f1f1;
+}
+.dark-mode .how-it-works, .dark-mode .about-section, .dark-mode .skills-section {
+  color: #f1f1f1;
+}
+.dark-mode .step p, .dark-mode .listing p {
+  color: #f1f1f1;
+}
+.dark-mode .circle {
+  background: #444;
+  color: #f1f1f1;
+}
+.dark-mode .edit-profile-btn {
+  background: #444;
+  color: #f1f1f1;
+}
+.dark-mode .edit-profile-btn:hover {
+  background: var(--hover-blue);
+  color: #f1f1f1;
+}
+.dark-mode .close {
+  color: #ddd;
+}
+.dark-mode .search-section input[type="text"] {
+  background: #222;
+  color: #f1f1f1;
+}

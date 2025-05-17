@@ -1,0 +1,19 @@
+/* this basically are the common colors to be used,the reusable variable colors */
+:root {
+  --header-footer-bg: #f1f1f1;
+  --body-bg: #fff9e5;
+  --primary-green: #3ebd3e;
+  --hover-blue: #1a73e8;
+  --grey: #888888;
+  --circle-bg: #e0e0e0;
+  --white: #fff;
+}
+
+/* this is for resetting the page and body styling */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: var(--body-bg);
+  color: #222;
+}

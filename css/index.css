@@ -1,0 +1,41 @@
+
+/* styling the how it works*/
+.how-it-works {
+  margin: 32px auto 24px auto;
+  max-width: 900px;
+}
+.how-it-works h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.steps-grid {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+}
+.circle {
+  width: 34px;
+  height: 34px;
+  background: var(--circle-bg);
+  color: var(--grey);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+.step p {
+  text-align: center;
+  font-size: 0.97rem;
+  color: #222;
+}

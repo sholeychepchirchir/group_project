@@ -1,0 +1,116 @@
+.profile-hero {
+  display: flex;
+  align-items: flex-start;
+  background: var(--primary-green);
+  color: #fff;
+  padding: 20px 14px 40px 14px;
+  position: relative;
+  border-radius: 0 0 10px 10px;
+}
+.profile-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 14px;
+  margin-top: 2px;
+  border: 3px solid #fff;
+}
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 6px;
+}
+.profile-info h1 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 0 0 4px 0;
+}
+.edit-profile-btn {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  background: #e0e0e0;
+  color: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 7px 18px;
+  font-size: 0.97rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.edit-profile-btn:hover {
+  background: var(--hover-blue);
+  color: #fff;
+}
+
+/* this is for the profile about section */
+.about-section {
+  max-width: 700px;
+  margin: 22px auto 0 auto;
+  padding: 0 10px;
+}
+.about-section h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.about-section p {
+  text-align: center;
+  font-size: 0.97rem;
+}
+/* this is for the add skill button */
+.add-skill-btn {
+  background: var(--primary-green);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-skill-btn:hover {
+  background: var(--hover-blue);
+}
+
+
+
+
+/* this is for the modal for editing profile */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.3);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 24px 18px;
+  border-radius: 8px;
+  max-width: 320px;
+  width: 90vw;
+  position: relative;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+.close {
+  position: absolute;
+  right: 12px; top: 8px;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}

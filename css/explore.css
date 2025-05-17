@@ -1,0 +1,16 @@
+/* this is for the search section styling */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 16px 0;
+}
+.search-section input[type="text"] {
+  width: 90%;
+  max-width: 320px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 5px;
+  background: #e0e0e0;
+  font-size: 1rem;
+  color: #333;
+}

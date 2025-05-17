@@ -1,4 +1,3 @@
-/* styling  the footer*/
 footer {
   background: var(--header-footer-bg);
   border-top: 1px solid #e0e0e0;
@@ -72,26 +71,3 @@ footer > p {
   padding-bottom: 6px;
   padding-top: 8px;
 }
-
-/*responsive design for footer section*/
-@media (max-width: 700px) {
- .footer-container {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 16px;
-  }
-  .footer-container > div {
-    min-width: 100%;
-    margin: 8px 0;
-  }
-  .footer-container .logo {
-    font-size: 1.5rem;
-  }
-  .footer-links h3, .footer-contact h3 {
-    font-size: 0.95rem;
-  }
-  .footer-links li, .footer-contact p, .footer-social a {
-    font-size: 0.9rem;
-  }
-}
-

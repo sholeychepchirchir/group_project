@@ -1,0 +1,63 @@
+.featured-listings, .skills-section {
+  margin: 28px auto 18px auto;
+  max-width: 1100px;
+}
+.featured-listings h2, .skills-section h2 {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.listing {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 12px 6px 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.listing img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+.listing p {
+  margin: 0;
+  margin-top: 4px;
+  font-size: 0.97rem;
+  text-align: center;
+}
+.listing .edit-skill-btn,
+.listing .delete-skill-btn {
+  position: absolute;
+  top: 8px;
+  font-size: 0.85rem;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.listing .edit-skill-btn {
+  right: 48px;
+  background: #3ebd3e;
+  color: #fff;
+}
+.listing .edit-skill-btn:hover {
+  background: #2e9d2e;
+  transform: scale(1.05);
+}
+.listing .delete-skill-btn {
+  right: 8px;
+  background: #e74c3c;
+  color: #fff;
+}
+.listing .delete-skill-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+}
