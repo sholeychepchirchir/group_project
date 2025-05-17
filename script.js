@@ -1,4 +1,4 @@
-// ========== Navigation Highlight ==========
+// function for navigation highlight
 document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-links a');
   navLinks.forEach(link => {
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ========== Form Validation and Signup Redirect ==========
+// function for Form Validation and redirection to signup
 document.addEventListener('DOMContentLoaded', function() {
   const forms = document.querySelectorAll('.form-section form');
   forms.forEach(form => {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Please fill in all required fields.');
         return;
       }
-      // Handle form submission
+      // Handling  form submission
       const submitButton = form.querySelector('button[type="submit"]');
       if (submitButton.textContent.includes('Sign Up')) {
         alert('Sign up successful! Redirecting to profile...');
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// ========== Edit Profile (Name, About, Photo) ==========
+// function for Editing Profile (Name, About, Photo) 
 document.addEventListener('DOMContentLoaded', function() {
   const editBtn = document.querySelector('#editProfileBtn');
   const modal = document.querySelector('#editModal');
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// ========== Add Skill (Known & Needed) ==========
+// function for Adding Skill (Known & Needed) 
 function addSkill(type) {
   const skillName = prompt("Enter the skill name:");
   if (!skillName || !skillName.trim()) {
@@ -117,7 +117,7 @@ function addSkill(type) {
   target.insertBefore(skillDiv, target.querySelector('.add-skill-btn'));
 }
 
-// ========== Edit Skill ==========
+// function for editing skill
 function editSkill(button, type) {
   const skillDiv = button.parentElement;
   const currentName = skillDiv.querySelector('p').textContent;
@@ -137,7 +137,7 @@ function editSkill(button, type) {
   alert("Skill updated successfully!");
 }
 
-// ========== Delete Skill ==========
+// function for deleting skill
 function deleteSkill(button) {
   if (confirm("Are you sure you want to delete this skill?")) {
     button.parentElement.remove();
@@ -145,14 +145,14 @@ function deleteSkill(button) {
   }
 }
 
-// ========== Match With Others (Placeholder for Future) ==========
+// function to be implemented in future for users to mark skills
 function findMatches() {
   // TODO: Implement skill matching functionality in the future
   // This will match users based on skills known and needed
   alert("Matching functionality is under development and will be available in a future update!");
 }
 
-// ========== Dark and Light Mode ==========
+// function for light and dark mode
 document.addEventListener('DOMContentLoaded', function() {
   const modeBtn = document.querySelector('#modeToggle');
   if (modeBtn) {
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// ========== Search Filter ==========
+// adding functionality for search filter
 document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.querySelector('.search-section input[type="text"]');
   const listings = document.querySelectorAll('.grid-3x3 .listing, .grid-3x2 .listing, .skills-grid .listing');
